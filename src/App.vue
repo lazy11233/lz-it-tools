@@ -1,6 +1,7 @@
+<script lang="ts" setup>
+import WebLayout from '@/layouts/WebLayout.vue'
+</script>
+
 <template>
-  <div class="text-blue-800">lz-it-tools</div>
-  {{ $t('appTips') }}
-  <el-button type="primary">Click Me</el-button>
-  <router-view />
+  <web-layout />
 </template>
