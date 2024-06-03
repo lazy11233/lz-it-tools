@@ -1,8 +1,24 @@
+<script setup lang="ts">
+import SearchInput from '@/components/SearchInput.vue'
+</script>
+
 <template>
-  <nav class="outline flex">
-    <IconifyIcon icon="mdi:view-sequential"/>
-    <IconifyIcon icon="mdi:home" />
-    <IconifyIcon icon="mdi:white-balance-sunny" />
-    <IconifyIcon icon="mdi:weather-night" />
+  <nav class="flex py-2 space-x-3 bg-white">
+    <IconifyIcon
+      icon="mdi:view-sequential"
+      class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-stone-700"
+    />
+    <IconifyIcon
+      icon="mdi:home"
+      class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-stone-700"
+    />
+    <SearchInput />
+    <ElButton>简体中文</ElButton>
+    <IconifyIcon
+      icon="mdi:information-slab-circle-outline"
+      class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1"
+    />
+    <IconifyIcon icon="mdi:white-balance-sunny" class="text-2xl cursor-pointer hover:bg-gray-100" />
+    <IconifyIcon icon="mdi:weather-night" class="text-2xl cursor-pointer hover:bg-gray-100" />
   </nav>
 </template>
