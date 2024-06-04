@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+
 import SearchInput from '@/components/SearchInput.vue'
 </script>
 
 <template>
-  <nav class="flex py-2 space-x-3 bg-white">
+  <nav class="flex py-2 space-x-3 bg-white dark:bg-slate-900">
     <IconifyIcon
       icon="mdi:view-sequential"
       class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-stone-700"
@@ -13,7 +18,9 @@ import SearchInput from '@/components/SearchInput.vue'
       class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-stone-700"
     />
     <SearchInput />
-    <ElButton>简体中文</ElButton>
+    <ElButton @click="toggleDark()">简体中文</ElButton>
+    <span class="ml-2">{{ isDark ? 'Dark' : 'Light' }}</span>
+    <IconifyIcon inline-block align-middle i="dark:carbon-moon carbon-sun" />
     <IconifyIcon
       icon="mdi:information-slab-circle-outline"
       class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1"
