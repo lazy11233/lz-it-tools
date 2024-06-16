@@ -3,6 +3,7 @@ import { useDark, useToggle } from '@vueuse/core'
 import SearchInput from '@/components/SearchInput.vue'
 import { useI18n } from 'vue-i18n'
 import { getCurrentLang } from '@/utils/tool'
+import { RouterLink } from 'vue-router'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
@@ -21,10 +22,12 @@ const changeLanguage = () => {
       icon="mdi:view-sequential"
       class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
     />
-    <IconifyIcon
-      icon="mdi:home"
-      class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
-    />
+    <RouterLink to="/">
+      <IconifyIcon
+        icon="mdi:home"
+        class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
+      />
+    </RouterLink>
     <SearchInput />
     <ElButton @click="changeLanguage">{{ $t('language') }}</ElButton>
     <IconifyIcon

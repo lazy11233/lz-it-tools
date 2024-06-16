@@ -6,7 +6,7 @@ import NavBar from '@/layouts/NavBar.vue'
 <template>
   <div class="relative pb-6 bg-light-bg dark:bg-dark-bg">
     <AsideMenu />
-    <div class="md:pl-[260px]">
+    <div class="md:pl-[260px] min-h-screen">
       <NavBar />
 
       <RouterView />
