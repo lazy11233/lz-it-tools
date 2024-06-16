@@ -16,7 +16,7 @@ const changeLanguage = () => {
 </script>
 
 <template>
-  <nav class="flex p-2 space-x-3">
+  <nav class="flex p-2 space-x-3 items-center">
     <IconifyIcon
       icon="mdi:view-sequential"
       class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
