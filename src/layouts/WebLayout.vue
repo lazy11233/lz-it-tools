@@ -4,9 +4,9 @@ import AsideMenu from './AsideMenu.vue'
 import NavBar from '@/layouts/NavBar.vue'
 </script>
 <template>
-  <div class="relative px-4 pb-6">
+  <div class="relative pb-6 bg-light-bg dark:bg-dark-bg">
     <AsideMenu />
-    <div class="md:pl-[260px] px-1">
+    <div class="md:pl-[260px]">
       <NavBar />
 
       <RouterView />

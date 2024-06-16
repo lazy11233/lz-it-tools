@@ -1,31 +1,40 @@
 <script setup lang="ts">
 import { useDark, useToggle } from '@vueuse/core'
+import SearchInput from '@/components/SearchInput.vue'
+import { useI18n } from 'vue-i18n'
+import { getCurrentLang } from '@/utils/tool'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-
-import SearchInput from '@/components/SearchInput.vue'
+const i18n = useI18n()
+const changeLanguage = () => {
+  const usedLang = getCurrentLang()
+  const currentLang = usedLang === 'zh' ? 'en' : 'zh'
+  localStorage.setItem('lang', currentLang)
+  i18n.locale.value = currentLang
+}
 </script>
 
 <template>
-  <nav class="flex py-2 space-x-3 bg-white dark:bg-slate-900">
+  <nav class="flex p-2 space-x-3">
     <IconifyIcon
       icon="mdi:view-sequential"
-      class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-stone-700"
+      class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
     />
     <IconifyIcon
       icon="mdi:home"
-      class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1 text-stone-700"
+      class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
     />
     <SearchInput />
-    <ElButton @click="toggleDark()">简体中文</ElButton>
-    <span class="ml-2">{{ isDark ? 'Dark' : 'Light' }}</span>
-    <IconifyIcon inline-block align-middle i="dark:carbon-moon carbon-sun" />
+    <ElButton @click="changeLanguage">{{ $t('language') }}</ElButton>
     <IconifyIcon
       icon="mdi:information-slab-circle-outline"
-      class="text-4xl cursor-pointer hover:bg-gray-200 rounded-full p-1"
+      class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
     />
-    <IconifyIcon icon="mdi:white-balance-sunny" class="text-2xl cursor-pointer hover:bg-gray-100" />
-    <IconifyIcon icon="mdi:weather-night" class="text-2xl cursor-pointer hover:bg-gray-100" />
+    <IconifyIcon
+      :icon="isDark ? 'mdi:weather-night' : 'mdi:white-balance-sunny'"
+      class="text-4xl cursor-pointer hover:bg-gray-200 hover:text-light-text-1 rounded-full p-1 text-light-text-2 dark:text-dark-text-1"
+      @click="toggleDark()"
+    />
   </nav>
 </template>
